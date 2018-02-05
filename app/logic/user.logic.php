@@ -107,7 +107,7 @@ class User {
     public function testShare($request, $response, $args) {
         $path = "http://test.share/pages/shares/share?ids=1&uid=1&cid=1";
 
-        //用户分享给组1
+        //用户1分享给组1
         $openGid = 1;  //组名
         $uid = 1;  //用户id
         $openId =1; //用户openid
@@ -120,8 +120,8 @@ class User {
         $this->logger->debug("testShare : $authHeader");
         $ret = $this->event("share",$path,$openGid,$session_key,$authHeader);
 
-        //用户在组1查看
-        \sleep(5);
+        //用户2在组1查看
+        \sleep(2);
         $path = "http://test.share/pages/shares/share?ids=1&uid=1&cid=1";
         $openGid = 1;  //组名
         $uid = 2;  //用户id
@@ -135,6 +135,20 @@ class User {
         $this->logger->debug("testShare show : $authHeader");
         $ret = $this->event("page_show",$path,$openGid,$session_key,$authHeader);
 
+        //用户3在组1查看
+        \sleep(2);
+        $path = "http://test.share/pages/shares/share?ids=1&uid=1&cid=1";
+        $openGid = 1;  //组名
+        $uid = 3;  //用户id
+        $openId =1; //用户openid
+        $userInfo = $this->createInfoInner($uid,$openId);
+        $session_key= $userInfo['session_key'];
+        $auth =[
+                 'bearer '. $uid  
+        ];
+        $authHeader ='bearer '. $uid;
+        $this->logger->debug("testShare show : $authHeader");
+        $ret = $this->event("page_show",$path,$openGid,$session_key,$authHeader);
 
         $this->container['result'] = $ret;
 
