@@ -1,0 +1,27 @@
+{
+    "name": "traceclouds/lordy",
+    "description": "API service of lordy",
+    "type": "project",
+    "require": {
+        "slim/slim": "^3.9",
+        "monolog/monolog": "^1.23",
+        "elasticsearch/elasticsearch": "^6.0",
+		"nategood/httpful": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^6.5"
+    },
+    "license": "BSD-3",
+    "authors": [
+        {
+            "name": "Dr.NP",
+            "email": "conan.np@gmail.com"
+        }
+    ],
+    "repositories": {
+        "packagist": {
+            "type": "composer",
+            "url": "https://packagist.phpcomposer.com"
+        }
+    }
+}
