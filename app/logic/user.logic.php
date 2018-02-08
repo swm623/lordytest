@@ -49,7 +49,10 @@ class User {
         $this->redis = $container->get('redis');        
         return;
     }
-
+    public function list($request, $response, $args)
+    {
+        return $response;
+    }
     public function info($request, $response, $args)
     {
         $token = $args['token'];
@@ -105,7 +108,9 @@ class User {
     }
 
     public function testShare($request, $response, $args) {
-        $path = "http://test.share/pages/shares/share?ids=1&uid=1&cid=1";
+        $ids = \filter_input(\INPUT_GET, 'ids');
+        $cid = \filter_input(\INPUT_GET, 'cid'); 
+        $path = 'http://test.share/pages/shares/share?ids=' .$ids . '&uid=1&cid='.$cid;
 
         //用户1分享给组1
         $openGid = 1;  //组名
@@ -122,7 +127,7 @@ class User {
 
         //用户2在组1查看
         \sleep(2);
-        $path = "http://test.share/pages/shares/share?ids=1&uid=1&cid=1";
+        $path = 'http://test.share/pages/shares/share?ids=' .$ids . '&uid=1&cid='.$cid;
         $openGid = 1;  //组名
         $uid = 2;  //用户id
         $openId =1; //用户openid
@@ -137,7 +142,7 @@ class User {
 
         //用户3在组1查看
         \sleep(2);
-        $path = "http://test.share/pages/shares/share?ids=1&uid=1&cid=1";
+        $path = 'http://test.share/pages/shares/share?ids=' .$ids . '&uid=1&cid='.$cid;
         $openGid = 1;  //组名
         $uid = 3;  //用户id
         $openId =1; //用户openid

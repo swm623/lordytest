@@ -60,6 +60,7 @@ require_once __DIR__ . '/logic/user.logic.php';
 $app->get('/info/{token}',  \Pixie\Logic\User::class . ':info')->setName('UserInfo');
 $app->get('/create/{uid}',  \Pixie\Logic\User::class . ':create')->setName('createInfo');
 $app->get('/test',  \Pixie\Logic\User::class . ':testShare')->setName('test');
+$app->post('/list',  \Pixie\Logic\User::class . ':list')->setName('list');
 
 
 /*
