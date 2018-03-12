@@ -34,7 +34,7 @@ $mw_Render = function($request, $response, $next) use ($container)
             'code' => $container['result_code'],
             'message' => $container['result_message'],
             'links' => $container['result_links'],
-            'timestamp' => \time(),
+            'timestamp' =>  \round(\microtime(true) * 1000),
             'data' => $container['result']
         ];
     }

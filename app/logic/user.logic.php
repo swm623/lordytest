@@ -138,7 +138,7 @@ class User {
         ];
         $authHeader ='bearer '. $uid;
         $this->logger->debug("testShare show : $authHeader");
-        $ret = $this->event("page_show",$path,$openGid,$session_key,$authHeader);
+        $ret = $this->event("show",$path,$openGid,$session_key,$authHeader);
 
         //用户3在组1查看
         \sleep(2);
@@ -153,7 +153,7 @@ class User {
         ];
         $authHeader ='bearer '. $uid;
         $this->logger->debug("testShare show : $authHeader");
-        $ret = $this->event("page_show",$path,$openGid,$session_key,$authHeader);
+        $ret = $this->event("show",$path,$openGid,$session_key,$authHeader);
 
         $this->container['result'] = $ret;
 
